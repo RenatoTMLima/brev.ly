@@ -1,11 +1,11 @@
 {
-  "id": "8d57769f-51ce-42d8-ab56-d8b1fc28024d",
+  "id": "7664e90e-65fd-480a-b2da-ca5316e92e12",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.uploads": {
-      "name": "uploads",
+    "public.urls": {
+      "name": "urls",
       "schema": "",
       "columns": {
         "id": {
@@ -14,23 +14,24 @@
           "primaryKey": true,
           "notNull": true
         },
-        "name": {
-          "name": "name",
+        "originalUrl": {
+          "name": "originalUrl",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "remote_key": {
-          "name": "remote_key",
+        "shortUrl": {
+          "name": "shortUrl",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "remote_url": {
-          "name": "remote_url",
-          "type": "text",
+        "accesses": {
+          "name": "accesses",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": 0
         },
         "created_at": {
           "name": "created_at",
@@ -44,11 +45,11 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "uploads_remote_key_unique": {
-          "name": "uploads_remote_key_unique",
+        "urls_id_unique": {
+          "name": "urls_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "remote_key"
+            "id"
           ]
         }
       },
