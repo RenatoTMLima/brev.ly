@@ -1,5 +1,5 @@
 {
-  "id": "ddb5e4ba-ba06-4073-9bf7-e879a3d4a736",
+  "id": "4458d5c6-da02-43f3-9c64-c81aa2652883",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -15,20 +15,20 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "originalLink": {
-          "name": "originalLink",
+        "original_link": {
+          "name": "original_link",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "shortLink": {
-          "name": "shortLink",
+        "short_link": {
+          "name": "short_link",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "accessNumber": {
-          "name": "accessNumber",
+        "access_number": {
+          "name": "access_number",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
