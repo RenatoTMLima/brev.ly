@@ -1,33 +1,34 @@
 {
-  "id": "7664e90e-65fd-480a-b2da-ca5316e92e12",
+  "id": "ddb5e4ba-ba06-4073-9bf7-e879a3d4a736",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.urls": {
-      "name": "urls",
+    "public.links": {
+      "name": "links",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "text",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
-        "originalUrl": {
-          "name": "originalUrl",
+        "originalLink": {
+          "name": "originalLink",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "shortUrl": {
-          "name": "shortUrl",
+        "shortLink": {
+          "name": "shortLink",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "accesses": {
-          "name": "accesses",
+        "accessNumber": {
+          "name": "accessNumber",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
@@ -45,8 +46,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "urls_id_unique": {
-          "name": "urls_id_unique",
+        "links_id_unique": {
+          "name": "links_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "id"

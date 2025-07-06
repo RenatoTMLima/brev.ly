@@ -5,11 +5,15 @@ import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import { fastify } from 'fastify'
 import {
   hasZodFastifySchemaValidationErrors,
+  jsonSchemaTransform,
   serializerCompiler,
   validatorCompiler,
+  ZodTypeProvider,
 } from 'fastify-type-provider-zod'
+import { createLinkRoute } from './routes/create-link'
+import { env } from '@/env'
 
-const server = fastify()
+const server = fastify().withTypeProvider<ZodTypeProvider>()
 
 server.setValidatorCompiler(validatorCompiler)
 server.setSerializerCompiler(serializerCompiler)
@@ -23,6 +27,7 @@ server.register(fastifySwagger, {
       version: '1.0.0',
     },
   },
+  transform: jsonSchemaTransform
 })
 server.register(fastifySwaggerUi, {
   routePrefix: '/docs',
@@ -42,8 +47,8 @@ server.setErrorHandler((error, request, reply) => {
 })
 
 // Register Routes
-// server.register()
+server.register(createLinkRoute)
 
-server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
+server.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   console.log('HTTP server running!!!')
 })
