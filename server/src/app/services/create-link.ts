@@ -6,7 +6,7 @@ import z from 'zod'
 
 const createLinkInput = z.object({
   originalLink: z.string().url(),
-  shortLink: z.string().url(),
+  shortLink: z.string(),
 })
 
 export type CreateLinkInput = z.infer<typeof createLinkInput>
@@ -27,12 +27,7 @@ export const createLink = async (
       shortLink: schema.links.shortLink,
     })
     .from(schema.links)
-    .where(
-      or(
-        eq(schema.links.originalLink, input.originalLink),
-        eq(schema.links.shortLink, input.shortLink)
-      )
-    )
+    .where(eq(schema.links.shortLink, input.shortLink))
 
   if (result.length) return makeLeft(new Error('Link already exists'))
 

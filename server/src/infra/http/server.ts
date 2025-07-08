@@ -20,7 +20,17 @@ const server = fastify().withTypeProvider<ZodTypeProvider>()
 
 server.setValidatorCompiler(validatorCompiler)
 server.setSerializerCompiler(serializerCompiler)
-server.register(fastifyCors, { origin: '*' })
+server.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authorization',
+  ],
+})
 server.register(fastifyMultipart)
 
 server.register(fastifySwagger, {

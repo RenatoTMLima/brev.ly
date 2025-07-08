@@ -3,13 +3,14 @@ import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const buttonVariants = tv({
-  base: 'rounded-md p-2 w-full disabled:opacity-50 disabled:bg-blue-base',
+  base: 'rounded-md p-2 w-full disabled:opacity-50 ',
 
   variants: {
     variant: {
-      primary: 'bg-blue-base hover:bg-blue-dark text-white text-md py-3',
+      primary:
+        'bg-blue-base hover:bg-blue-dark text-white text-md py-4 disabled:bg-blue-base',
       secondary:
-        'bg-gray-200 text-gray-500 text-sm font-semibold border hover:border-blue-base',
+        'bg-gray-200 text-gray-500 text-sm font-semibold border hover:border-blue-base w-fit disabled:bg-gray-200 disabled:border-gray-200',
     },
   },
 
